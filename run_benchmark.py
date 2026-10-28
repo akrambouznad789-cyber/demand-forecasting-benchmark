@@ -50,8 +50,13 @@ def main():
     scores = pd.DataFrame(score_rows)
     scores.to_csv(RESULTS_DIRECTORY / f"scores_{MODEL_NAME}.csv", index=False)
     pd.DataFrame(forecast_rows).to_csv(RESULTS_DIRECTORY / f"forecasts_{MODEL_NAME}.csv", index=False)
+    metric_columns = ["mase", "scaled_quantile_loss", "coverage_80"]
     print(f"{len(scores)} series, test window {test_dates[0].date()} to {test_dates[-1].date()}")
-    print(scores[["mase", "scaled_quantile_loss", "coverage_80"]].mean().round(3).to_string())
+    print(scores[metric_columns].mean().round(3).to_string())
+    # Series ids look like "CA_1_FOODS_3": the category is the third part.
+    scores["category"] = scores["series_id"].str.split("_").str[2]
+    print("\nBy category:")
+    print(scores.groupby("category")[metric_columns].mean().round(3).to_string())
 
 
 if __name__ == "__main__":

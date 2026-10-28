@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, please cite it as below."
+type: software
+title: "Probabilistic Demand Forecasting: Time-Series Foundation Models vs. Strong Baselines"
+abstract: >-
+  A reproducible benchmark of zero-shot time-series foundation models against classical baselines on the M5
+  retail demand data, scored on point accuracy (MASE) and on the calibration of probabilistic forecasts
+  (scaled quantile loss, prediction interval coverage).
+authors:
+  - family-names: Bouznad
+    given-names: Akram
+    affiliation: Polytechnique Montréal
+repository-code: "https://github.com/akrambouznad789-cyber/demand-forecasting-benchmark"
+license: MIT
+keywords:
+  - time series forecasting
+  - probabilistic forecasting
+  - foundation models
+  - demand forecasting
+  - M5
+  - supply chain
